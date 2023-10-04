@@ -8,11 +8,11 @@ class LoginPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: const Color(0x53B3C1),
-    body: Column(children: [
+      backgroundColor: const Color(0xff53B3C1),
+    // body: Column(children: [
       
 
-    ]),
+    // ]),
      );  
   }
 }
