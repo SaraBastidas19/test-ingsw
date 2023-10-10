@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:proyecto1/pagina2.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key});
@@ -70,22 +71,28 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20), // Espacio entre campo de texto y botón
-            ElevatedButton(
-              onPressed: () {
-                // Lógica del botón
-              },
-              child: Text(
-                'Iniciar Sesión',
-                style: TextStyle(
-                  fontFamily: 'Inter', // Tipo de letra "Inter"
-                  fontWeight: FontWeight.w600, // Semibold
-                  fontSize: 25.0, // Tamaño de fuente 40
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                primary: const Color(0xff2986AE), // Cambio de color del botón
-              ),
-            ),
+           ElevatedButton(
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Pagina2(),
+      ),
+    );
+  },
+  child: Text(
+    'Iniciar Sesión',
+    style: TextStyle(
+      fontFamily: 'Inter',
+      fontWeight: FontWeight.w600,
+      fontSize: 25.0,
+    ),
+  ),
+  style: ElevatedButton.styleFrom(
+    primary: const Color(0xff2986AE),
+  ),
+),
+
           ],
         ),
       ),
