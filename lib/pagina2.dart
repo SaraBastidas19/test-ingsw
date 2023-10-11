@@ -1,7 +1,13 @@
-import 'package:proyecto1/pagina2.dart'; // Asegúrate de que la ruta sea correcta
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:proyecto1/pagina2.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: Pagina2(),
+  ));
+}
 
 class Pagina2 extends StatefulWidget {
   @override
@@ -18,13 +24,6 @@ class _Pagina2State extends State<Pagina2> {
     fontStyle: FontStyle.italic,
     fontSize: 24.0,
     color: Colors.white,
-    shadows: [
-      Shadow(
-        offset: Offset(2.0, 2.0),
-        blurRadius: 5.0,
-        color: Colors.black,
-      ),
-    ],
   );
 
   @override
@@ -36,7 +35,7 @@ class _Pagina2State extends State<Pagina2> {
           style: TextStyle(
             fontFamily: 'Inter',
             fontWeight: FontWeight.bold,
-            fontSize: 64.0,
+            fontSize: 45.0,
             color: Colors.white,
           ),
         ),
@@ -69,42 +68,43 @@ class _Pagina2State extends State<Pagina2> {
 
   Widget _buildDataRow(String labelText) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          child: Text(
-            labelText,
-            style: labelText == 'CARACTERÍSTICAS'
-                ? TextStyle(
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24.0,
-                    color: Colors.white,
-                  )
-                : customTextStyle,
-          ),
+        Text(
+          labelText,
+          style: labelText == 'CARACTERÍSTICAS'
+              ? TextStyle(
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24.0,
+                  color: Colors.white,
+                )
+              : customTextStyle,
         ),
         SizedBox(width: 20.0),
-        Expanded(
-          child: TextFormField(
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18.0,
-            ),
-            decoration: InputDecoration(
-              hintText: 'Ingrese $labelText',
-              hintStyle: TextStyle(
-                color: Colors.white,
+        if (labelText == 'Coordenadas en X' || labelText == 'Coordenadas en Y')
+          Container(
+            width: 150, // Ancho fijo
+            child: TextFormField(
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
               ),
-              filled: true,
-              fillColor: Colors.white,
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
+              decoration: InputDecoration(
+                hintText: 'Ingrese $labelText',
+                hintStyle: TextStyle(
                   color: Colors.white,
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
       ],
     );
   }
@@ -113,18 +113,16 @@ class _Pagina2State extends State<Pagina2> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          child: Text(
-            labelText,
-            style: labelText == 'CARACTERÍSTICAS'
-                ? TextStyle(
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24.0,
-                    color: Colors.white,
-                  )
-                : customTextStyle,
-          ),
+        Text(
+          labelText,
+          style: labelText == 'CARACTERÍSTICAS'
+              ? TextStyle(
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24.0,
+                  color: Colors.white,
+                )
+              : customTextStyle,
         ),
         SizedBox(width: 20.0),
         Row(
@@ -196,5 +194,3 @@ class _Pagina2State extends State<Pagina2> {
     );
   }
 }
-
-

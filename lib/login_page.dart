@@ -48,7 +48,7 @@ class LoginPage extends StatelessWidget {
               child: TextFormField(
                 style: TextStyle(
                   fontSize: 18,
-                  color: Colors.white, // Texto blanco
+                  color: Colors.black, // Texto blanco
                 ),
                 decoration: InputDecoration(
                   hintText: 'Ingresa algo', // Utiliza hintText en lugar de labelText
@@ -99,5 +99,3 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
-
-
