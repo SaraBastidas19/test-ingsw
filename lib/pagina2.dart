@@ -1,5 +1,4 @@
 import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:proyecto1/pagina2.dart';
 
@@ -15,8 +14,14 @@ class Pagina2 extends StatefulWidget {
 }
 
 class _Pagina2State extends State<Pagina2> {
-  bool areaPrivada = false;
-  bool nuevo = false;
+  bool usado = false;
+  String resultado = '';
+  Map<String, TextEditingController> controllers = {
+  'Coordenadas en X': TextEditingController(),
+  'Coordenadas en Y': TextEditingController(),
+  'Área Privada Neta': TextEditingController(),
+  // Agrega más controladores según sea necesario
+};
 
   TextStyle customTextStyle = TextStyle(
     fontFamily: 'Inter',
@@ -28,6 +33,7 @@ class _Pagina2State extends State<Pagina2> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -53,11 +59,30 @@ class _Pagina2State extends State<Pagina2> {
                 SizedBox(height: 20.0),
                 _buildDataRow('Coordenadas en Y'),
                 SizedBox(height: 20.0),
-                _buildOptionRow('Área Privada', areaPrivada),
+            
+                _buildDataRow('Área Privada Neta'),
                 SizedBox(height: 20.0),
-                _buildOptionRow('Nuevo', nuevo),
+                _buildOptionRow('Usado', usado),
                 SizedBox(height: 40.0), // Espacio adicional antes del botón
                 _buildCalculateButton(),
+                SizedBox(height: 80.0), 
+                Row(
+                  mainAxisAlignment : MainAxisAlignment.center,
+                children:[
+                  Text(
+                  resultado,
+                  style: resultado == 'CARACTERÍSTICAS'
+                      ? TextStyle(
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24.0,
+                          color: Colors.white,
+                        )
+                      : customTextStyle,
+                )
+                ]
+                  
+                )
               ],
             ),
           ),
@@ -82,10 +107,13 @@ class _Pagina2State extends State<Pagina2> {
               : customTextStyle,
         ),
         SizedBox(width: 20.0),
-        if (labelText == 'Coordenadas en X' || labelText == 'Coordenadas en Y')
+        if (labelText == 'Coordenadas en X' || labelText == 'Coordenadas en Y' || labelText == 'Área Privada Neta')
           Container(
             width: 150, // Ancho fijo
             child: TextFormField(
+              controller: controllers[labelText],
+              onChanged:(value){
+              },
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 18.0,
@@ -139,10 +167,8 @@ class _Pagina2State extends State<Pagina2> {
               groupValue: isSelected,
               onChanged: (bool? value) {
                 setState(() {
-                  if (labelText == 'Área Privada') {
-                    areaPrivada = value ?? false;
-                  } else if (labelText == 'Nuevo') {
-                    nuevo = value ?? false;
+                  if (labelText == 'Usado') {
+                    usado = value ?? false;
                   }
                 });
               },
@@ -159,10 +185,8 @@ class _Pagina2State extends State<Pagina2> {
               groupValue: isSelected,
               onChanged: (bool? value) {
                 setState(() {
-                  if (labelText == 'Área Privada') {
-                    areaPrivada = value ?? false;
-                  } else if (labelText == 'Nuevo') {
-                    nuevo = value ?? false;
+                 if (labelText == 'Usado') {
+                    usado = value ?? false;
                   }
                 });
               },
@@ -178,6 +202,10 @@ class _Pagina2State extends State<Pagina2> {
       child: ElevatedButton(
         onPressed: () {
           // Lógica para el botón "Calcular"
+          int valorEntero = usado ? 1 : 0;
+           setState(() {
+        resultado = 'x:'+(controllers['Coordenadas en X']?.text ?? '')+'y:'+(controllers['Coordenadas en Y']?.text ?? '')+'area:'+(controllers['Área Privada Neta']?.text ?? '')+'usado'+valorEntero.toString();
+    });
         },
         child: Text(
           'Calcular',
