@@ -1,3 +1,4 @@
+
 import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:proyecto1/pagina2.dart';
@@ -204,7 +205,8 @@ class _Pagina2State extends State<Pagina2> {
           // Lógica para el botón "Calcular"
           int valorEntero = usado ? 1 : 0;
            setState(() {
-        resultado = 'x:'+(controllers['Coordenadas en X']?.text ?? '')+'y:'+(controllers['Coordenadas en Y']?.text ?? '')+'area:'+(controllers['Área Privada Neta']?.text ?? '')+'usado'+valorEntero.toString();
+
+        resultado = "el precio es : "+(570116.0*double.parse((controllers['Coordenadas en X']?.text ?? ''))-7914688.73*double.parse((controllers['Coordenadas en Y']?.text ?? ''))+6059.72038*double.parse((controllers['Área Privada Neta']?.text ?? ''))-145040.708*valorEntero+168544654.30620614).toString();
     });
         },
         child: Text(
