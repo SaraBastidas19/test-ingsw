@@ -1,7 +1,5 @@
-
-import 'dart:html';
 import 'package:flutter/material.dart';
-import 'package:proyecto1/pagina2.dart';
+import 'package:proyecto1/login_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -11,12 +9,15 @@ void main() {
 
 class Pagina2 extends StatefulWidget {
   @override
+  
   _Pagina2State createState() => _Pagina2State();
 }
 
 class _Pagina2State extends State<Pagina2> {
   bool usado = false;
   String resultado = '';
+  String mensajeYaHaIngresado = LoginPage.yaHaIngresado?'Un gusto saludarte de nuevo':'Bienvenido';
+  
   Map<String, TextEditingController> controllers = {
   'Coordenadas en X': TextEditingController(),
   'Coordenadas en Y': TextEditingController(),
@@ -80,10 +81,27 @@ class _Pagina2State extends State<Pagina2> {
                           color: Colors.white,
                         )
                       : customTextStyle,
+                )]),
+                SizedBox(height: 60.0),
+                Row(mainAxisAlignment : MainAxisAlignment.center,
+                children:[
+                  Text(
+                  mensajeYaHaIngresado,
+                  style:  TextStyle(
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24.0,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                        )
+                      ,
                 )
                 ]
-                  
                 )
+                
+
+                
+                  
+                
               ],
             ),
           ),
@@ -207,6 +225,7 @@ class _Pagina2State extends State<Pagina2> {
            setState(() {
 
         resultado = "el precio es : "+(570116.0*double.parse((controllers['Coordenadas en X']?.text ?? ''))-7914688.73*double.parse((controllers['Coordenadas en Y']?.text ?? ''))+6059.72038*double.parse((controllers['Área Privada Neta']?.text ?? ''))-145040.708*valorEntero+168544654.30620614).toString();
+        
     });
         },
         child: Text(

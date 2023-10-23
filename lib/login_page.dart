@@ -1,10 +1,11 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:proyecto1/pagina2.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key});
+  static List<String> ids = [];
+  static TextEditingController controlador = TextEditingController();
+  static bool yaHaIngresado = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,7 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               width: 300, // Ancho del campo de texto
               child: TextFormField(
+                controller: controlador,
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.black, // Texto blanco
@@ -73,6 +75,13 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 20), // Espacio entre campo de texto y botón
            ElevatedButton(
   onPressed: () {
+    if (ids.contains(controlador.text)){
+      yaHaIngresado = true;
+    }else{
+      yaHaIngresado = false;
+    }
+    ids.insert(0,controlador.text);
+    print(LoginPage.ids);
     Navigator.push(
       context,
       MaterialPageRoute(
