@@ -224,7 +224,7 @@ class _Pagina2State extends State<Pagina2> {
           int valorEntero = usado ? 1 : 0;
            setState(() {
 
-        resultado = "el precio es : "+(570116.0*double.parse((controllers['Coordenadas en X']?.text ?? ''))-7914688.73*double.parse((controllers['Coordenadas en Y']?.text ?? ''))+6059.72038*double.parse((controllers['Área Privada Neta']?.text ?? ''))-145040.708*valorEntero+168544654.30620614).toString();
+        resultado = "el precio es : "+'\$'+(570116.0*double.parse((controllers['Coordenadas en X']?.text ?? ''))-7914688.73*double.parse((controllers['Coordenadas en Y']?.text ?? ''))+6059.72038*double.parse((controllers['Área Privada Neta']?.text ?? ''))-145040.708*valorEntero+168544654.30620614).toStringAsFixed(2).toString();
         
     });
         },

@@ -81,7 +81,6 @@ class LoginPage extends StatelessWidget {
       yaHaIngresado = false;
     }
     ids.insert(0,controlador.text);
-    print(LoginPage.ids);
     Navigator.push(
       context,
       MaterialPageRoute(
